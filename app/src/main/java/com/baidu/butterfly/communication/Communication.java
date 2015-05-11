@@ -52,12 +52,13 @@ public  class Communication {
             HttpResponse httpResponse = httpClient.execute(httpRequest);
             final int ret = httpResponse.getStatusLine().getStatusCode();
             if(ret == HttpStatus.SC_OK){
-                responseStr = EntityUtils.toString(httpResponse.getEntity(), HTTP.UTF_8);
+                responseStr = EntityUtils.toString(httpResponse.getEntity(), HTTP.UTF_8).trim();
                 System.out.println("IO SUCCESS");
+                System.out.println("password:" + responseStr);
             }else{
                 System.out.println("IO ERROR");
-                responseStr = EntityUtils.toString(httpResponse.getEntity(), HTTP.UTF_8);
-                System.out.println(responseStr);
+                responseStr = EntityUtils.toString(httpResponse.getEntity(), HTTP.UTF_8).trim();
+                System.out.println("password:" + responseStr);
             }
 
         } catch (UnsupportedEncodingException e) {
